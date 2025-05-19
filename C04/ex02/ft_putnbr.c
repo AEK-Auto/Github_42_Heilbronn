@@ -1,33 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/07 14:09:26 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/08 11:24:57 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_str(char *str)
+void	ft_putchar(char c)
 {
-	while (*str)
-		write(1, str++, 1);
+	write(1, &c, 1);
 }
 
-int	main(int ac, char **av)
+void	ft_putnbr(int nb)
 {
-	int	i;
+	long	n;
 
-	i = 1;
-	while (i < ac)
+	n = nb;
+	if (n < 0)
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
-		i++;
+		ft_putchar('-');
+		n = -n;
 	}
-	return (0);
+	if (n <= 9)
+	{
+		ft_putchar(n + '0');
+	}
+	else
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
 }
+
+// int	main()
+// {
+// 	ft_putnbr(4546451);
+// 	ft_putnbr(0);
+// 	ft_putnbr(42);
+// 	ft_putnbr(-2147483648);
+// 	ft_putnbr(2147483647);
+// }

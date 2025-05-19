@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/07 13:54:15 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/08 11:26:50 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_str(char *str)
+void	ft_putchar(char c)
 {
-	while (*str)
-		write(1, str++, 1);
+	write(1, &c, 1);
 }
 
-int	main(int ac, char **av)
+void	ft_putstr(char *str)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (0);
 }
+
+// int	main(void)
+// {
+// 	char	*str;
+
+// 	str = "Hello World!  ";
+// 	ft_putstr(str);
+// }

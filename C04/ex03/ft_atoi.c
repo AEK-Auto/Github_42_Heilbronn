@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/07 17:04:31 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/08 16:04:51 by hoji             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_atoi(char *str)
+{
+	int	sign;
+	int	res;
+
+	sign = 1;
+	res = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	return (sign * res);
+}
+
+// #include <stdio.h>
+// int	main()
+// {
+// 	char	str[] = " ---+--+1234ab567";
+// 	char	str1[] = "   ---+-45-+1234ab567";
+// 	printf("The result is: %d\n", ft_atoi(str));
+// 	printf("The result is: %d\n", ft_atoi(str1));
+// }

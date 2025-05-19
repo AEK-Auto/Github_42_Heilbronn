@@ -5,37 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/07 20:17:10 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/05/08 22:16:57 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/09 10:14:08 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/09 18:25:10 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_putchar_str(char *str)
 {
 	while (*str)
 		write(1, str++, 1);
-	write(1, "\n", 1);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_strswap(char **a, char **b)
 {
-	while (*s1 == *s2 && *s1)
+	char	*temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+int	ft_strcmp(char *str1, char *str2)
+{
+	while (*str1 == *str2 && *str1)
 	{
-		s1++;
-		s2++;
+		str1++;
+		str2++;
 	}
-	return (*s1 - *s2);
-}
-
-void	ft_swap(char **a, char **b)
-{
-	char	*tmp;
-
-	tmp = *b;
-	*b = *a;
-	*a = tmp;
+	return (*str1 - *str2);
 }
 
 int	main(int ac, char **av)
@@ -49,9 +48,12 @@ int	main(int ac, char **av)
 		j = i;
 		while (++j < ac)
 			if (ft_strcmp(av[i], av[j]) > 0)
-				ft_swap(&av[i], &av[j]);
+				ft_strswap(&av[i], &av[j]);
 	}
 	i = 0;
 	while (++i < ac)
-		ft_putstr(av[i]);
+	{
+		ft_putchar_str(av[i]);
+		write(1, "\n", 1);
+	}
 }

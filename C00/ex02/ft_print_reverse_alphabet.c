@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
+/*   By: hoji <hoji@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/01 14:01:24 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/01 17:27:39 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_str(char *str)
+void	ft_putchar(char c)
 {
-	while (*str)
-		write(1, str++, 1);
+	write(1, &c, 1);
 }
 
-int	main(int ac, char **av)
+void	ft_print_reverse_alphabet(void)
 {
-	int	i;
+	char	letter;
 
-	i = 1;
-	while (i < ac)
+	letter = 'z';
+	while (letter >= 'a')
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
-		i++;
+		ft_putchar(letter);
+		letter--;
 	}
-	return (0);
 }

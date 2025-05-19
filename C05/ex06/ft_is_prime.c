@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/12 00:15:30 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/12 00:40:01 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar_str(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
-int	main(int ac, char **av)
+int	ft_is_prime(int nb)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	if (nb < 2)
+		return (0);
+	if (nb == 2)
+		return (1);
+	if (nb > 2 && nb % 2 == 0)
+		return (0);
+	i = 3;
+	while (i * i <= nb)
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
-		i++;
+		if (nb % i == 0)
+			return (0);
+		i += 2;
 	}
-	return (0);
+	return (1);
 }
+
+// #include <stdio.h>
+// int	main()
+// {
+// 	printf("%d\n", ft_is_prime(35));
+// }

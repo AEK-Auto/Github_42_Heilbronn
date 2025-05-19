@@ -1,33 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/01 21:06:53 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/02 10:14:08 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_str(char *str)
+void	ft_putchar(char c)
 {
-	while (*str)
-		write(1, str++, 1);
+	write(1, &c, 1);
 }
 
-int	main(int ac, char **av)
+void	ft_print_comb2(void)
 {
 	int	i;
+	int	j;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i <= 98)
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
+		j = i + 1;
+		while (j <= 99)
+		{
+			ft_putchar(48 + i / 10);
+			ft_putchar(48 + i % 10);
+			ft_putchar(' ');
+			ft_putchar(48 + j / 10);
+			ft_putchar(48 + j % 10);
+			if (i != 98)
+			{
+				write(1, &", ", 2);
+			}
+			j++;
+		}
 		i++;
 	}
-	return (0);
+	write(1, &"\n", 1);
 }
+
+// int	main(void)
+// {
+// 	ft_print_comb2();
+// }

@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/05 19:53:35 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/05 23:43:14 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_str(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
-int	main(int ac, char **av)
+char	*ft_strupcase(char *str)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] = str[i] - 32;
+		}
 		i++;
 	}
-	return (0);
+	return (str);
 }
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	str_in[] = "hello World";
+// 	char	*str_out;
+
+// 	str_out = ft_strupcase(str_in);
+// 	printf("The result is: %s \n", str_out);
+// }

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/15 19:13:19 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/19 19:08:23 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-void	ft_putchar_str(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
+# include <unistd.h>
 
-int	main(int ac, char **av)
-{
-	int	i;
+typedef int	t_bool;
 
-	i = 1;
-	while (i < ac)
-	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
-}
+# define EVEN(x) (x % 2 == 0)
+
+# define TRUE 1
+# define FALSE 0
+
+# define SUCCESS 0
+
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG "I have an odd number of arguments.\n"
+
+#endif

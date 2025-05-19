@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/09 18:35:14 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/11 23:51:08 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar_str(char *str)
+int	ft_iterative_power(int nb, int power)
 {
-	while (*str)
-		write(1, str++, 1);
+	int	n;
+
+	n = nb;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	while (--power)
+		n *= nb;
+	return (n);
 }
 
-int	main(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	while (i < ac)
-	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
-}
+// #include <stdio.h>
+// int	main()
+// {
+// 	printf("%d\n", ft_iterative_power(2,4));
+// }

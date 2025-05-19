@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   .c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoji <hoji@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 10:10:31 by hoji              #+#    #+#             */
-/*   Updated: 2025/05/09 10:11:31 by hoji             ###   ########.fr       */
+/*   Created: 2025/05/02 11:33:47 by hoji              #+#    #+#             */
+/*   Updated: 2025/05/09 09:52:02 by hoji             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_str(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
-int	main(int ac, char **av)
+char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (src[i] != '\0')
 	{
-		ft_putchar_str(av[ac - i]);
-		write(1, "\n", 1);
+		dest[i] = src[i];
 		i++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }
+
+// int	main(void)
+// {
+// 	char	a[4];
+// 	(a, "ABCD");
+// 	write(1, &a, 4);
+// }
